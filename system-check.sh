@@ -5,34 +5,40 @@
 # Author: Naum Ivanovski                                   #
 # =========================================================#
 
+# Colors
+R="\[\e[1;31m\]"; # Red
+G="\[\e[1;32m\]"; # Green
+Y="\[\e[1;33m\]"; # Yellow
+B="\[\e[1;34m\]"; # Blue
+P="\[\e[1;35m\]"; # Purple
+A="\[\e[1;36m\]"; # Aqua
+W="\[\e[1;37m\]"; # White
+RS="\[\e[0m\]";   # Reset Color
+
 # Get CPU utilization in % (Formula: 100 - idle CPU)
-CPU_INFO=$(top -b -n 1 | grep "Cpu" | awk '{print "\tCPU Usage: "100-$8"%"}')
+CPU_INFO=$(top -b -n 1 | grep "Cpu" | awk '{print "\tCPU  Usage: "100-$8"%"}')
 
 # Get RAM memory utilization (Formula: used/total MB (used/total*100%))
-RAM_INFO=$(free -m | grep "Mem:" | awk '{print "\tRAM Usage: "$3"/"$2" MB (" $3/$2*100 "%)"}')
+RAM_INFO=$(free -m | grep "Mem:" | awk '{print "\tRAM  Usage: "$3"/"$2" MB (" $3/$2*100 "%)"}')
 
 # Get SWAP memory utilization (Formula: used/total MB (used/total*100%))
 SWAP_INFO=$(free -m | grep "Swap:" | awk '{print "\tSwap Usage: "$3"/"$2" MB (" $3/$2*100 "%)"}')
 
-# Get Disk space
-DISK_INFO=$(df -h | awk '{print "\t" $0}')
-
 #====================# 
 # Display statistics #
 #====================#
-
 clear
 
-echo "Disk space:"
-echo $DISK_INFO
+echo -e "${A}Disk space:${G}"
+df -h | awk '{print "\t" $0}'
 echo ""
 
-echo "Memory usage:"
-echo $CPU_INFO
-echo $RAM_INFO
-echo $SWAP_INFO
+echo -e "{A}Memory usage:${G}"
+echo "${CPU_INFO}"
+echo "${RAM_INFO}"
+echo "${SWAP_INFO}"
 echo ""
 
-echo -n "Uptime:"
+echo -en "${A}Uptime:${G}"
 uptime
-echo ""
+echo -e "${RS}"
