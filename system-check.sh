@@ -6,14 +6,14 @@
 # =========================================================#
 
 # Colors
-R="\[\e[1;31m\]"; # Red
-G="\[\e[1;32m\]"; # Green
-Y="\[\e[1;33m\]"; # Yellow
-B="\[\e[1;34m\]"; # Blue
-P="\[\e[1;35m\]"; # Purple
-A="\[\e[1;36m\]"; # Aqua
-W="\[\e[1;37m\]"; # White
-RS="\[\e[0m\]";   # Reset Color
+R="\e[1;31m"; # Red
+G="\e[1;32m"; # Green
+Y="\e[1;33m"; # Yellow
+B="\e[1;34m"; # Blue
+P="\e[1;35m"; # Purple
+A="\e[1;36m"; # Aqua
+W="\e[1;37m"; # White
+RS="\e[0m";   # Reset Color
 
 # Get CPU utilization in % (Formula: 100 - idle CPU)
 CPU_INFO=$(top -b -n 1 | grep "Cpu" | awk '{print "\tCPU  Usage: "100-$8"%"}')
