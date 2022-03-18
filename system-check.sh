@@ -19,10 +19,10 @@ RS="\e[0m";   # Reset Color
 CPU_INFO=$(top -b -n 1 | grep "Cpu" | awk '{print "\tCPU  Usage: "100-$8"%"}')
 
 # Get RAM memory utilization (Formula: used/total MB (used/total*100%))
-RAM_INFO=$(free -m | grep "Mem:" | awk '{print "\tRAM  Usage: "$3"/"$2" MB (" $3/$2*100 "%)"}')
+RAM_INFO=$(free -m | grep "Mem:" | awk '{printf "\tRAM  Usage: %s/%s MB (%.1f%)",$3,$2,$3/$2*100}')
 
 # Get SWAP memory utilization (Formula: used/total MB (used/total*100%))
-SWAP_INFO=$(free -m | grep "Swap:" | awk '{print "\tSwap Usage: "$3"/"$2" MB (" $3/$2*100 "%)"}')
+SWAP_INFO=$(free -m | grep "Swap:" | awk '{printf "\tSwap Usage: %s/%s MB (%.1f%)", $3, $2, $3/$2*100}')
 
 # Get Number of CPU(s)
 CPU_NUMBER=$(grep "cpu" /proc/stat | wc -l | awk '{print "\tNumber of CPU(s): "$0-1}')
