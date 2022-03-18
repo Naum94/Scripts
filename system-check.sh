@@ -33,7 +33,7 @@ echo -e "${A}Disk space:${G}"
 df -h | awk '{print "\t" $0}'
 echo ""
 
-echo -e "{A}Memory usage:${G}"
+echo -e "${A}Memory usage:${G}"
 echo "${CPU_INFO}"
 echo "${RAM_INFO}"
 echo "${SWAP_INFO}"
